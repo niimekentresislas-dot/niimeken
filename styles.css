@@ -1,6 +1,7 @@
 /* ==========================================================================
    NIIMEKEN - Estilos Principales
    Cuidado Personal, Moda y Cultura Amazónica
+   Tres Islas - Madre de Dios
    ========================================================================== */
 
 :root {
@@ -37,7 +38,7 @@
     --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 
     /* Transitions & Radii */
-    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 22px;
@@ -89,6 +90,20 @@ img, svg {
 }
 
 /* ==========================================================================
+   Reading Progress Bar
+   ========================================================================== */
+.reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-forest-accent), var(--color-gold-bright), var(--color-terracotta));
+    z-index: 1001;
+    transition: width 0.1s ease-out;
+}
+
+/* ==========================================================================
    Top Announcement
    ========================================================================== */
 .top-announcement {
@@ -134,20 +149,28 @@ img, svg {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 78px;
+    height: 82px;
 }
 
 .brand-logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.85rem;
 }
 
-.logo-symbol {
-    color: var(--color-forest-leaf);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.brand-logo-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border: 2px solid var(--color-gold);
+    transition: var(--transition);
+}
+
+.brand-logo:hover .brand-logo-img {
+    transform: scale(1.08) rotate(4deg);
+    box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
 }
 
 .logo-text {
@@ -181,11 +204,11 @@ img, svg {
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 1.8rem;
+    gap: 1.6rem;
 }
 
 .nav-link {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 500;
     color: var(--color-forest-dark);
     position: relative;
@@ -438,20 +461,25 @@ img, svg {
     box-shadow: 0 24px 50px rgba(7, 30, 22, 0.35);
     border: 1px solid rgba(217, 119, 6, 0.25);
     overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.hero-card-display:hover {
+    box-shadow: 0 30px 60px rgba(7, 30, 22, 0.45);
 }
 
 .card-glow {
     position: absolute;
     top: -50px;
     right: -50px;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(217, 119, 6, 0.25), transparent 70%);
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.28), transparent 70%);
     pointer-events: none;
 }
 
 .kene-header-art {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     opacity: 0.85;
 }
 
@@ -460,33 +488,62 @@ img, svg {
     height: 38px;
 }
 
-.hero-illustration {
+/* Hero Logo Real Showcase */
+.hero-logo-showcase {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.8rem;
-}
-
-.nature-circle {
-    position: relative;
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    margin: 1.2rem 0 1.8rem;
 }
 
-.nature-leaf-badge {
-    background: rgba(217, 119, 6, 0.2);
+.logo-real-frame {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 10px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(217, 119, 6, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.pulse-glow {
+    animation: glowPulse 3.5s infinite alternate ease-in-out;
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(217, 119, 6, 0.25);
+    }
+    100% {
+        box-shadow: 0 22px 55px rgba(7, 30, 22, 0.6), 0 0 24px rgba(34, 197, 94, 0.35), 0 0 0 5px rgba(245, 158, 11, 0.45);
+    }
+}
+
+.hero-real-logo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.hero-card-display:hover .logo-real-frame {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.verified-badge {
+    display: inline-block;
+    background: rgba(217, 119, 6, 0.22);
     color: var(--color-gold-light);
-    border: 1px solid rgba(217, 119, 6, 0.4);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.3rem 0.8rem;
+    border: 1px solid rgba(217, 119, 6, 0.45);
+    padding: 0.3rem 0.85rem;
     border-radius: var(--radius-full);
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.05em;
-}
-
-.botanical-svg {
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.8rem;
 }
 
 .hero-card-caption h3 {
@@ -500,6 +557,7 @@ img, svg {
     font-size: 0.88rem;
     color: #cbd5e1;
     margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 .card-tags {
@@ -599,7 +657,7 @@ img, svg {
 }
 
 .about-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     box-shadow: var(--shadow-md);
     border-color: rgba(22, 101, 74, 0.3);
 }
@@ -676,10 +734,96 @@ img, svg {
 }
 
 /* ==========================================================================
+   Workshop & Community Gallery
+   ========================================================================== */
+.workshop-section {
+    background: var(--color-cream);
+    border-bottom: 1px solid var(--color-sand-border);
+}
+
+.workshop-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.workshop-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--color-sand-border);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.workshop-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-forest-leaf);
+}
+
+.workshop-img-box {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background: var(--color-forest-dark);
+}
+
+.workshop-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.workshop-card:hover .workshop-img-box img {
+    transform: scale(1.08);
+}
+
+.workshop-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(7, 30, 22, 0.96) 0%, rgba(7, 30, 22, 0.75) 60%, transparent 100%);
+    color: #ffffff;
+    padding: 2.4rem 1.6rem 1.6rem;
+    transition: var(--transition);
+}
+
+.workshop-badge {
+    display: inline-block;
+    background: var(--color-gold);
+    color: #000000;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 0.55rem;
+}
+
+.workshop-overlay h4 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
+    color: #ffffff;
+    line-height: 1.25;
+}
+
+.workshop-overlay p {
+    font-size: 0.86rem;
+    color: #cbd5e1;
+    line-height: 1.55;
+}
+
+/* ==========================================================================
    Pillars Section
    ========================================================================== */
 .pillars-section {
-    background: var(--color-cream);
+    background: #ffffff;
     border-bottom: 1px solid var(--color-sand-border);
 }
 
@@ -690,7 +834,7 @@ img, svg {
 }
 
 .pillar-card {
-    background: #ffffff;
+    background: var(--color-cream);
     border: 1px solid var(--color-sand-border);
     border-radius: var(--radius-lg);
     padding: 2.2rem 1.8rem;
@@ -772,7 +916,7 @@ img, svg {
    Product Showcase
    ========================================================================== */
 .products-section {
-    background: #ffffff;
+    background: var(--color-cream);
     border-bottom: 1px solid var(--color-sand-border);
 }
 
@@ -785,7 +929,7 @@ img, svg {
 }
 
 .filter-btn {
-    background: var(--color-sand);
+    background: #ffffff;
     border: 1px solid var(--color-sand-border);
     color: var(--color-forest-dark);
     font-family: var(--font-body);
@@ -812,7 +956,7 @@ img, svg {
 }
 
 .product-card {
-    background: var(--color-cream);
+    background: #ffffff;
     border: 1px solid var(--color-sand-border);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -823,7 +967,7 @@ img, svg {
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
     border-color: rgba(22, 101, 74, 0.4);
 }
@@ -1055,7 +1199,7 @@ img, svg {
    Ingredients Section
    ========================================================================== */
 .ingredients-section {
-    background: var(--color-sand);
+    background: #ffffff;
     border-bottom: 1px solid var(--color-sand-border);
 }
 
@@ -1066,7 +1210,7 @@ img, svg {
 }
 
 .ingredient-card {
-    background: #ffffff;
+    background: var(--color-cream);
     border: 1px solid var(--color-sand-border);
     border-radius: var(--radius-lg);
     padding: 2.4rem 2rem;
@@ -1075,8 +1219,9 @@ img, svg {
 }
 
 .ingredient-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
+    border-color: var(--color-terracotta);
 }
 
 .ing-badge {
@@ -1243,13 +1388,21 @@ img, svg {
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(217, 119, 6, 0.35);
+    border: 2px solid rgba(217, 119, 6, 0.45);
+    background: #000000;
 }
 
-.kene-full-svg {
+.kene-texture-img {
+    width: 100%;
+    max-width: 340px;
+    height: 420px;
+    object-fit: cover;
     display: block;
-    width: 320px;
-    height: 320px;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kene-art-frame:hover .kene-texture-img {
+    transform: scale(1.04);
 }
 
 .kene-badge-text {
@@ -1257,23 +1410,23 @@ img, svg {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(9, 28, 21, 0.88);
+    background: rgba(9, 28, 21, 0.92);
     backdrop-filter: blur(8px);
     text-align: center;
-    padding: 0.6rem;
+    padding: 0.65rem 0.5rem;
     font-size: 0.72rem;
     font-weight: 600;
     color: var(--color-gold-light);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    border-top: 1px solid rgba(217, 119, 6, 0.2);
+    border-top: 1px solid rgba(217, 119, 6, 0.25);
 }
 
 /* ==========================================================================
    Impact Section
    ========================================================================== */
 .impact-section {
-    background: #ffffff;
+    background: var(--color-cream);
     border-bottom: 1px solid var(--color-sand-border);
 }
 
@@ -1285,7 +1438,7 @@ img, svg {
 }
 
 .metric-card {
-    background: var(--color-cream);
+    background: #ffffff;
     border: 1px solid var(--color-sand-border);
     border-radius: var(--radius-lg);
     padding: 2.2rem 1.6rem;
@@ -1294,7 +1447,7 @@ img, svg {
 }
 
 .metric-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     border-color: var(--color-forest-leaf);
     box-shadow: var(--shadow-md);
 }
@@ -1391,7 +1544,7 @@ img, svg {
    Contact Section
    ========================================================================== */
 .contact-section {
-    background: var(--color-cream);
+    background: #ffffff;
     padding: 6rem 0;
 }
 
@@ -1608,6 +1761,84 @@ img, svg {
 }
 
 /* ==========================================================================
+   Scroll Reveal Transitions
+   ========================================================================== */
+.reveal-on-scroll {
+    opacity: 0;
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.fade-up {
+    transform: translateY(40px);
+}
+
+.reveal-on-scroll.fade-down {
+    transform: translateY(-40px);
+}
+
+.reveal-on-scroll.fade-left {
+    transform: translateX(40px);
+}
+
+.reveal-on-scroll.fade-right {
+    transform: translateX(-40px);
+}
+
+.reveal-on-scroll.zoom-in {
+    transform: scale(0.92);
+}
+
+.reveal-on-scroll.is-revealed {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+/* Stagger Delays */
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.18s; }
+.stagger-3 { transition-delay: 0.28s; }
+.stagger-4 { transition-delay: 0.38s; }
+.stagger-5 { transition-delay: 0.48s; }
+
+/* Back to Top Floating Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-forest-dark), var(--color-forest-mid));
+    color: var(--color-gold-bright);
+    border: 1.5px solid rgba(217, 119, 6, 0.4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.85);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+    background: linear-gradient(135deg, var(--color-forest-leaf), var(--color-forest-mid));
+    color: #ffffff;
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 .site-footer {
@@ -1622,6 +1853,23 @@ img, svg {
     grid-template-columns: 2fr 1fr 1fr;
     gap: 3rem;
     padding-bottom: 3.5rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.footer-logo-img {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-gold);
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .brand-col .logo-title {
@@ -1725,6 +1973,10 @@ img, svg {
         grid-template-columns: 1fr;
     }
 
+    .workshop-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .pillars-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1757,7 +2009,7 @@ img, svg {
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        top: 78px;
+        top: 82px;
         left: 0;
         right: 0;
         background: #ffffff;
@@ -1790,6 +2042,7 @@ img, svg {
         font-size: 1.9rem;
     }
 
+    .workshop-gallery-grid,
     .pillars-grid,
     .products-grid,
     .impact-metrics-grid {
@@ -1807,5 +2060,12 @@ img, svg {
 
     .manifesto-quote {
         font-size: 1.25rem;
+    }
+
+    .back-to-top {
+        bottom: 1.2rem;
+        right: 1.2rem;
+        width: 42px;
+        height: 42px;
     }
 }

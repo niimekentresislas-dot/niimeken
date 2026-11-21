@@ -3,40 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Niimeken - Integrando el cuidado personal, la moda y la cultura amazónica mediante jabones artesanales de cacao y coco con sangre de grado, y joyería inspirada en el arte shipibo-konibo.">
-    <title>Niimeken | Cuidado Personal, Moda y Cultura Amazónica</title>
+    <meta name="description" content="Nii Meken - Integrando el cuidado personal, la moda y la cultura amazónica mediante jabones artesanales de cacao y coco con sangre de grado, y joyería inspirada en el arte shipibo-konibo.">
+    <title>Nii Meken | Cuidado Personal, Moda y Cultura Amazónica</title>
+    <link rel="icon" type="image/jpeg" href="images/Logoreal.jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Reading Progress Indicator -->
+    <div class="reading-progress-bar" id="readingProgress"></div>
+
     <!-- Top announcement banner -->
     <div class="top-announcement">
         <div class="container announcement-content">
-            <span>🌿 Proyecto Comunitario Sostenible • Amazonía Viva • Tres Islas</span>
-            <a href="#contacto" class="banner-link">Súmate al proyecto &rarr;</a>
+            <span class="announcement-badge">🌿 Proyecto Comunitario Sostenible • Tres Islas, Madre de Dios</span>
+            <a href="#contacto" class="banner-link">Súmate a nuestra red &rarr;</a>
         </div>
     </div>
 
     <!-- Navigation Header -->
     <header class="site-header" id="header">
         <div class="container nav-container">
-            <a href="#inicio" class="brand-logo">
-                <div class="logo-symbol">
-                    <svg viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="currentColor">
-                        <polygon points="20,4 36,20 20,36 4,20" stroke-width="2" stroke="var(--color-primary-light)" fill="rgba(34, 197, 94, 0.08)"/>
-                        <polygon points="20,10 30,20 20,30 10,20" stroke-width="1.8" stroke="var(--color-accent)"/>
-                        <circle cx="20" cy="20" r="3" fill="var(--color-terracotta)"/>
-                        <line x1="20" y1="4" x2="20" y2="10" stroke-width="2" stroke="var(--color-accent)"/>
-                        <line x1="20" y1="30" x2="20" y2="36" stroke-width="2" stroke="var(--color-accent)"/>
-                        <line x1="4" y1="20" x2="10" y2="20" stroke-width="2" stroke="var(--color-accent)"/>
-                        <line x1="30" y1="20" x2="36" y2="20" stroke-width="2" stroke="var(--color-accent)"/>
-                    </svg>
-                </div>
+            <a href="#inicio" class="brand-logo" aria-label="Inicio Nii Meken">
+                <img src="images/Logoreal.jpeg" alt="Logo Oficial Nii Meken" class="brand-logo-img">
                 <div class="logo-text">
-                    <span class="logo-title">NIIMEKEN</span>
-                    <span class="logo-sub">Amazonía • Tradición • Vida</span>
+                    <span class="logo-title">NII MEKEN</span>
+                    <span class="logo-sub">Tres Islas • Madre de Dios</span>
                 </div>
             </a>
 
@@ -44,6 +38,7 @@
                 <ul class="nav-list">
                     <li><a href="#inicio" class="nav-link active">Inicio</a></li>
                     <li><a href="#proyecto" class="nav-link">El Proyecto</a></li>
+                    <li><a href="#taller" class="nav-link">El Taller</a></li>
                     <li><a href="#pilares" class="nav-link">Pilares</a></li>
                     <li><a href="#productos" class="nav-link">Catálogo</a></li>
                     <li><a href="#ingredientes" class="nav-link">Saberes</a></li>
@@ -65,15 +60,15 @@
     <section class="hero-section" id="inicio">
         <div class="hero-pattern-bg"></div>
         <div class="container hero-container">
-            <div class="hero-content">
+            <div class="hero-content reveal-on-scroll fade-right">
                 <div class="badge-pill">
-                    <span class="sparkle">✦</span> Sabiduría Ancestral & Desarrollo Comunitario
+                    <span class="sparkle">✦</span> Sabiduría Ancestral & Emprendimiento Comunitario
                 </div>
                 <h1 class="hero-title">
                     Integrando el <span class="gradient-text">Cuidado Personal</span>, la Moda y la <span class="highlight-culture">Cultura Amazónica</span>
                 </h1>
                 <p class="hero-description">
-                    Elaboramos jabones artesanales puros de cacao y coco con el poder regenerador de la sangre de grado, complementados con joyería hecha a mano inspirada en el arte sagrado Shipibo-Konibo. Una iniciativa nacida para empoderar a nuestra comunidad y proteger el corazón de la Amazonía.
+                    Elaboramos jabones artesanales puros de cacao y coco con el poder regenerador de la sangre de grado, complementados con joyería hecha a mano inspirada en el arte sagrado Shipibo-Konibo. Una iniciativa nacida en la Comunidad Tres Islas para empoderar a nuestras familias y proteger el corazón de la Amazonía.
                 </p>
                 <div class="hero-actions">
                     <a href="#proyecto" class="btn btn-primary">
@@ -83,7 +78,7 @@
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
-                    <a href="#productos" class="btn btn-secondary">Ver Colecciones</a>
+                    <a href="#taller" class="btn btn-secondary">Ver Nuestro Taller</a>
                 </div>
 
                 <div class="hero-features-grid">
@@ -118,43 +113,35 @@
                 </div>
             </div>
 
-            <div class="hero-visual">
-                <div class="hero-card-display">
+            <div class="hero-visual reveal-on-scroll fade-left">
+                <div class="hero-card-display interactive-card">
                     <div class="card-glow"></div>
                     <div class="hero-card-inner">
                         <div class="kene-header-art">
-                            <svg class="kene-banner-svg" viewBox="0 0 300 60" preserveAspectRatio="none">
-                                <path d="M 0,30 L 30,5 L 60,30 L 90,5 L 120,30 L 150,5 L 180,30 L 210,5 L 240,30 L 270,5 L 300,30 L 270,55 L 240,30 L 210,55 L 180,30 L 150,55 L 120,30 L 90,55 L 60,30 L 30,55 Z" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
-                                <path d="M 30,18 L 60,42 L 90,18 L 120,42 L 150,18 L 180,42 L 210,18 L 240,42 L 270,18" fill="none" stroke="var(--color-primary-light)" stroke-width="1.5"/>
+                            <svg class="kene-banner-svg" viewBox="0 0 300 50" preserveAspectRatio="none">
+                                <path d="M 0,25 L 25,5 L 50,25 L 75,5 L 100,25 L 125,5 L 150,25 L 175,5 L 200,25 L 225,5 L 250,25 L 275,5 L 300,25 L 275,45 L 250,25 L 225,45 L 200,25 L 175,45 L 150,25 L 125,45 L 100,25 L 75,45 L 50,25 L 25,45 Z" fill="none" stroke="var(--color-gold)" stroke-width="2"/>
+                                <path d="M 25,15 L 50,35 L 75,15 L 100,35 L 125,15 L 150,35 L 175,15 L 200,35 L 225,15 L 250,35 L 275,15" fill="none" stroke="var(--color-forest-accent)" stroke-width="1.5"/>
                             </svg>
                         </div>
-                        <div class="hero-illustration">
-                            <div class="nature-circle">
-                                <div class="nature-leaf-badge">Sangre de Grado • Cacao • Coco</div>
-                                <div class="nature-art-composition">
-                                    <!-- Botanical SVG Composition -->
-                                    <svg viewBox="0 0 200 200" width="160" height="160" class="botanical-svg">
-                                        <circle cx="100" cy="100" r="90" fill="#132a22" stroke="rgba(217,119,6,0.3)" stroke-width="2"/>
-                                        <!-- Cacao Pod -->
-                                        <ellipse cx="80" cy="95" rx="32" ry="48" fill="#78350f" transform="rotate(-15 80 95)" />
-                                        <path d="M 68,52 Q 78,95 72,138 M 80,48 Q 88,95 86,142 M 92,54 Q 96,95 98,136" stroke="#92400e" stroke-width="2" fill="none"/>
-                                        <!-- Dragon's Blood drop -->
-                                        <path d="M 135,70 C 135,70 160,110 160,125 C 160,140 148,150 135,150 C 122,150 110,140 110,125 C 110,110 135,70 135,70 Z" fill="#b91c1c" opacity="0.92"/>
-                                        <circle cx="130" cy="120" r="6" fill="#ef4444" opacity="0.7"/>
-                                        <!-- Coconut slice -->
-                                        <circle cx="110" cy="140" r="28" fill="#451a03" stroke="#fef3c7" stroke-width="5"/>
-                                        <circle cx="110" cy="140" r="20" fill="#f8fafc"/>
-                                    </svg>
-                                </div>
+                        
+                        <!-- Logo Real Showcase Frame -->
+                        <div class="hero-logo-showcase">
+                            <div class="logo-real-frame pulse-glow">
+                                <img src="images/Logoreal.jpeg" alt="Logo Oficial Nii Meken - Tres Islas" class="hero-real-logo">
                             </div>
                         </div>
+
                         <div class="hero-card-caption">
-                            <h3>Alquimia y Arte Ancestral</h3>
-                            <p>Fórmulas botánicas vivas y tejidos con significado espiritual que honran a la selva.</p>
+                            <div class="verified-badge">
+                                <span>✦ Sello Oficial de Identidad Biocultural ✦</span>
+                            </div>
+                            <h3>Alquimia y Memoria Ancestral</h3>
+                            <p>La mano abierta de nuestra gente ofreciendo los dones medicinales del bosque: cacao silvestre, coco puro, resina de sangre de grado y la geometría protectora del Kené.</p>
                             <div class="card-tags">
                                 <span>#ComercioJusto</span>
-                                <span>#ShipiboKonibo</span>
                                 <span>#TresIslas</span>
+                                <span>#MadreDeDios</span>
+                                <span>#CuidadoNatural</span>
                             </div>
                         </div>
                     </div>
@@ -166,21 +153,21 @@
     <!-- About Section -->
     <section class="section about-section" id="proyecto">
         <div class="container">
-            <div class="section-header text-center">
+            <div class="section-header text-center reveal-on-scroll fade-up">
                 <span class="sub-heading">Identidad & Propósito</span>
-                <h2 class="section-title">El Proyecto Niimeken</h2>
+                <h2 class="section-title">El Proyecto Nii Meken</h2>
                 <div class="header-decor">
                     <span class="decor-line"></span>
                     <span class="decor-diamond">✦</span>
                     <span class="decor-line"></span>
                 </div>
                 <p class="section-intro">
-                    Nacemos en el corazón de la Amazonía para crear un puente tangible entre la sabiduría milenaria, el cuidado consciente del cuerpo y la protección de nuestro entorno natural.
+                    Nacemos en la Comunidad Nativa Tres Islas, Madre de Dios, para crear un puente tangible entre la sabiduría milenaria, el cuidado consciente del cuerpo y la protección activa de la Amazonía.
                 </p>
             </div>
 
             <div class="about-grid">
-                <div class="about-card story-card">
+                <div class="about-card story-card reveal-on-scroll fade-right stagger-1">
                     <div class="about-icon-wrap">
                         <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -188,16 +175,16 @@
                     </div>
                     <h3>Nuestra Misión y Origen</h3>
                     <p>
-                        <strong>Niimeken</strong> busca integrar el <strong>cuidado personal, la moda y la cultura amazónica</strong>. Nace como una respuesta comunitaria para valorar nuestras raíces, diversificar las oportunidades de sustento económico sin talar el bosque y convertir la riqueza botánica en bienestar para las personas.
+                        <strong>Nii Meken</strong> nace como una respuesta comunitaria para valorar nuestras raíces, diversificar las fuentes de sustento económico sin talar el bosque y convertir la riqueza botánica en salud y bienestar para las personas.
                     </p>
                     <ul class="styled-check-list">
-                        <li>Fusión armónica de cosmética natural y arte tradicional.</li>
-                        <li>Conservación activa mediante el aprovechamiento responsable de especies no maderables.</li>
-                        <li>Preservación de técnicas y diseños sagrados Shipibo-Konibo.</li>
+                        <li>Fusión armónica de cosmética dermatológica natural y arte tradicional.</li>
+                        <li>Aprovechamiento sostenible y ético de especies no maderables.</li>
+                        <li>Preservación de técnicas y patrones sagrados Shipibo-Konibo.</li>
                     </ul>
                 </div>
 
-                <div class="about-card community-focus-card">
+                <div class="about-card community-focus-card reveal-on-scroll fade-left stagger-2">
                     <div class="about-icon-wrap">
                         <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -208,13 +195,69 @@
                     </div>
                     <h3>Participación Comunitaria</h3>
                     <p>
-                        Promovemos la <strong>participación activa de las familias locales</strong>, fomentando el intercambio intergeneracional de conocimientos entre abuelas sabias, jóvenes emprendedores y artesanas expertas. Cada barra de jabón y cada joya porta el esfuerzo colectivo y la dignidad de nuestro pueblo.
+                        Promovemos la <strong>participación activa de las familias locales</strong>, fomentando el intercambio intergeneracional entre abuelas sabias, jóvenes emprendedores y artesanas expertas. Cada barra de jabón y cada joya porta el esfuerzo colectivo y la dignidad de nuestro pueblo.
                     </p>
                     <div class="quote-box">
                         <p class="quote-text">
-                            "Cuando elaboramos un jabón o tejemos un diseño Kené, estamos cantando a la selva y recordando quiénes somos."
+                            "Cuando elaboramos un jabón o tejemos un diseño Kené, estamos honrando a la selva y recordando quiénes somos."
                         </p>
-                        <span class="quote-author">— Comunidad Tres Islas</span>
+                        <span class="quote-author">— Jóvenes y Sabios de Tres Islas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop & Community Gallery Section -->
+    <section class="section workshop-section" id="taller">
+        <div class="container">
+            <div class="section-header text-center reveal-on-scroll fade-up">
+                <span class="sub-heading">Manos y Saberes Locales</span>
+                <h2 class="section-title">El Taller Comunitario en Acción</h2>
+                <div class="header-decor">
+                    <span class="decor-line"></span>
+                    <span class="decor-diamond">✦</span>
+                    <span class="decor-line"></span>
+                </div>
+                <p class="section-intro">
+                    Conoce de cerca nuestro proceso: higiene rigurosa, materias primas puras del bosque y la energía transformadora de las y los jóvenes de Tres Islas.
+                </p>
+            </div>
+
+            <div class="workshop-gallery-grid">
+                <!-- Foto 1: Taller con moldes y bálsamos -->
+                <div class="workshop-card reveal-on-scroll fade-up stagger-1">
+                    <div class="workshop-img-box">
+                        <img src="images/taller-moldes.jpg" alt="Equipo de Nii Meken en el taller de formulación con moldes" loading="lazy">
+                        <div class="workshop-overlay">
+                            <span class="workshop-badge">Formulación & Moldes</span>
+                            <h4>Creatividad y Arte Dérmico</h4>
+                            <p>Diseño de barras botánicas y bálsamos labiales enriquecidos con mantecas amazónicas puras.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 2: Proceso de saponificación y mezclas -->
+                <div class="workshop-card reveal-on-scroll fade-up stagger-2">
+                    <div class="workshop-img-box">
+                        <img src="images/taller-elaboracion.jpg" alt="Proceso de saponificación e infusión de sangre de grado" loading="lazy">
+                        <div class="workshop-overlay">
+                            <span class="workshop-badge">Proceso Artesanal</span>
+                            <h4>Alquimia de Plantas Medicinales</h4>
+                            <p>Infusión de sangre de grado silvestre, aceite puro de coco y cortezas protectoras.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 3: Equipo con productos terminados -->
+                <div class="workshop-card reveal-on-scroll fade-up stagger-3">
+                    <div class="workshop-img-box">
+                        <img src="images/equipo-productos.jpg" alt="Emprendedores de Tres Islas con su línea de productos" loading="lazy">
+                        <div class="workshop-overlay">
+                            <span class="workshop-badge">Juventud Emprendedora</span>
+                            <h4>Orgullo y Desarrollo Comunitario</h4>
+                            <p>Generación de oportunidades dignas y sostenibles para las familias de Madre de Dios.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -224,22 +267,22 @@
     <!-- Pillars Section -->
     <section class="section pillars-section" id="pilares">
         <div class="container">
-            <div class="section-header text-center">
+            <div class="section-header text-center reveal-on-scroll fade-up">
                 <span class="sub-heading">Fundamentos de Nuestra Labor</span>
-                <h2 class="section-title">Los 4 Pilares de Niimeken</h2>
+                <h2 class="section-title">Los 4 Pilares de Nii Meken</h2>
                 <div class="header-decor">
                     <span class="decor-line"></span>
                     <span class="decor-diamond">✦</span>
                     <span class="decor-line"></span>
                 </div>
                 <p class="section-intro">
-                    Nuestra visión integra la salud de la piel, la memoria viva, la prosperidad comunitaria y el equilibrio ecológico en una misma dirección.
+                    Nuestra visión integra la salud dérmica, la memoria viva, la prosperidad comunitaria y el equilibrio ecológico en una misma dirección.
                 </p>
             </div>
 
             <div class="pillars-grid">
                 <!-- Pilar 1 -->
-                <div class="pillar-card">
+                <div class="pillar-card reveal-on-scroll fade-up stagger-1">
                     <div class="pillar-num">01</div>
                     <div class="pillar-icon">
                         <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2">
@@ -248,7 +291,7 @@
                     </div>
                     <h3 class="pillar-title">Cuidado Personal Natural</h3>
                     <p class="pillar-desc">
-                        Jabones artesanales elaborados en pequeños lotes con manteca virgen de <strong>cacao</strong>, aceite puro de <strong>coco</strong> y la prodigiosa <strong>sangre de grado</strong>. Fórmulas libres de químicos nocivos que nutren, restauran y protegen la piel de forma natural.
+                        Jabones artesanales elaborados en pequeños lotes con manteca virgen de <strong>cacao</strong>, aceite puro de <strong>coco</strong> y la prodigiosa <strong>sangre de grado</strong>. Fórmulas libres de químicos sintéticos nocivos que nutren, restauran y protegen la piel de forma natural.
                     </p>
                     <div class="pillar-highlight">
                         <span>Poder cicatrizante • Antioxidante • Hidratación</span>
@@ -256,7 +299,7 @@
                 </div>
 
                 <!-- Pilar 2 -->
-                <div class="pillar-card">
+                <div class="pillar-card reveal-on-scroll fade-up stagger-2">
                     <div class="pillar-num">02</div>
                     <div class="pillar-icon">
                         <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2">
@@ -273,7 +316,7 @@
                 </div>
 
                 <!-- Pilar 3 -->
-                <div class="pillar-card">
+                <div class="pillar-card reveal-on-scroll fade-up stagger-3">
                     <div class="pillar-num">03</div>
                     <div class="pillar-icon">
                         <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2">
@@ -293,7 +336,7 @@
                 </div>
 
                 <!-- Pilar 4 -->
-                <div class="pillar-card">
+                <div class="pillar-card reveal-on-scroll fade-up stagger-4">
                     <div class="pillar-num">04</div>
                     <div class="pillar-icon">
                         <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2">
@@ -318,7 +361,7 @@
     <!-- Product Showcase Section -->
     <section class="section products-section" id="productos">
         <div class="container">
-            <div class="section-header text-center">
+            <div class="section-header text-center reveal-on-scroll fade-up">
                 <span class="sub-heading">Creaciones Artesanales</span>
                 <h2 class="section-title">Nuestras Líneas de Creación</h2>
                 <div class="header-decor">
@@ -327,7 +370,7 @@
                     <span class="decor-line"></span>
                 </div>
                 <p class="section-intro">
-                    Cada producto es un homenaje a la abundancia de la selva y a la destreza de las manos artesanas que transforman elementos naturales en piezas de arte y salud.
+                    Cada producto es un homenaje a la generosidad de la selva y a la destreza de las manos artesanas que transforman elementos naturales en piezas de salud y arte.
                 </p>
 
                 <!-- Filter Controls -->
@@ -341,12 +384,12 @@
 
             <div class="products-grid" id="productsGrid">
                 <!-- Item 1: Jabón Cacao & Sangre de Grado -->
-                <div class="product-card" data-category="jabones">
+                <div class="product-card reveal-on-scroll fade-up stagger-1" data-category="jabones">
                     <div class="product-badge">Regenerador</div>
                     <div class="product-image-box">
                         <div class="product-art-preview soap-cacao-bg">
                             <div class="soap-block">
-                                <span class="soap-stamp">NIIMEKEN</span>
+                                <span class="soap-stamp">NII MEKEN</span>
                                 <div class="soap-accent-line"></div>
                             </div>
                         </div>
@@ -370,12 +413,12 @@
                 </div>
 
                 <!-- Item 2: Jabón Coco & Sangre de Grado -->
-                <div class="product-card" data-category="jabones">
+                <div class="product-card reveal-on-scroll fade-up stagger-2" data-category="jabones">
                     <div class="product-badge">Hidratación Serena</div>
                     <div class="product-image-box">
                         <div class="product-art-preview soap-coco-bg">
                             <div class="soap-block soap-block-coco">
-                                <span class="soap-stamp">NIIMEKEN</span>
+                                <span class="soap-stamp">NII MEKEN</span>
                                 <div class="soap-accent-line"></div>
                             </div>
                         </div>
@@ -399,7 +442,7 @@
                 </div>
 
                 <!-- Item 3: Joyería Shipibo Collares Kené -->
-                <div class="product-card" data-category="joyeria">
+                <div class="product-card reveal-on-scroll fade-up stagger-3" data-category="joyeria">
                     <div class="product-badge ethnic-badge">Kené Sagrado</div>
                     <div class="product-image-box">
                         <div class="product-art-preview jewelry-bg">
@@ -434,7 +477,7 @@
                 </div>
 
                 <!-- Item 4: Joyería Shipibo Aretes y Pulseras -->
-                <div class="product-card" data-category="joyeria">
+                <div class="product-card reveal-on-scroll fade-up stagger-1" data-category="joyeria">
                     <div class="product-badge ethnic-badge">Arte Ancestral</div>
                     <div class="product-image-box">
                         <div class="product-art-preview jewelry-earrings-bg">
@@ -467,13 +510,13 @@
                 </div>
 
                 <!-- Item 5: Set de Bienestar Niimeken -->
-                <div class="product-card" data-category="sets">
+                <div class="product-card reveal-on-scroll fade-up stagger-2" data-category="sets">
                     <div class="product-badge set-badge">Pack Completo</div>
                     <div class="product-image-box">
                         <div class="product-art-preview set-box-bg">
                             <div class="pack-illustration">
                                 <div class="pack-box">
-                                    <span>NIIMEKEN EXPERIENCIA</span>
+                                    <span>NII MEKEN EXPERIENCIA</span>
                                     <div class="pack-items-mini">
                                         <div class="mini-soap"></div>
                                         <div class="mini-soap mini-soap-alt"></div>
@@ -487,7 +530,7 @@
                         <span class="product-cat-label">Experiencia Integral</span>
                         <h3 class="product-name">Cofre de Bienestar Amazónico</h3>
                         <p class="product-desc">
-                            La experiencia total Niimeken: un jabón de Cacao y Sangre de Grado, un jabón de Coco hidratante y una pulsera Kené tejida a mano, presentados en una caja ecológica de fibra vegetal amazónica.
+                            La experiencia total Nii Meken: un jabón de Cacao y Sangre de Grado, un jabón de Coco hidratante y una pulsera Kené tejida a mano, presentados en una caja ecológica de fibra vegetal amazónica.
                         </p>
                         <div class="product-specs">
                             <span>✦ 2 Jabones artesanales completos (110g c/u)</span>
@@ -507,7 +550,7 @@
     <!-- Ingredients and Lore Section -->
     <section class="section ingredients-section" id="ingredientes">
         <div class="container">
-            <div class="section-header text-center">
+            <div class="section-header text-center reveal-on-scroll fade-up">
                 <span class="sub-heading">Botánica Sagrada</span>
                 <h2 class="section-title">Nuestros Ingredientes Nativos</h2>
                 <div class="header-decor">
@@ -522,7 +565,7 @@
 
             <div class="ingredients-grid">
                 <!-- Sangre de Grado -->
-                <div class="ingredient-card">
+                <div class="ingredient-card reveal-on-scroll fade-up stagger-1">
                     <div class="ing-badge">La Resina Sagrada</div>
                     <div class="ing-icon-circle blood-circle">
                         <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
@@ -535,14 +578,14 @@
                         Látex rojizo extraído de la corteza del árbol amazónico mediante cortes superficiales respetuosos. Contiene <strong>taspina</strong> y un altísimo nivel de proantocianidinas, convirtiéndolo en uno de los cicatrizantes y regeneradores celulares naturales más poderosos del planeta.
                     </p>
                     <ul class="ing-bullets">
-                        <li>Acelera la recuperación cutánea.</li>
-                        <li>Escudo protector ante la polución ambiental.</li>
-                        <li>Efecto astringente y purificante.</li>
+                        <li>Acelera la recuperación dérmica natural.</li>
+                        <li>Escudo protector ante la polución y radicales libres.</li>
+                        <li>Efecto astringente y purificante profundo.</li>
                     </ul>
                 </div>
 
                 <!-- Cacao Amazónico -->
-                <div class="ingredient-card">
+                <div class="ingredient-card reveal-on-scroll fade-up stagger-2">
                     <div class="ing-badge">Alimento de Dioses</div>
                     <div class="ing-icon-circle cacao-circle">
                         <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
@@ -555,14 +598,14 @@
                         Cultivado agroforestalmente en parcelas comunitarias libres de deforestación. Su manteca pura y sus flavonoides combaten el envejecimiento prematuro de la piel, restauran la elasticidad y proporcionan una emoliencia densa y aterciopelada.
                     </p>
                     <ul class="ing-bullets">
-                        <li>Rico en ácidos esteárico y oleico.</li>
+                        <li>Rico en ácidos esteárico y oleico nutritivos.</li>
                         <li>Retiene la humedad natural de la dermis.</li>
-                        <li>Aroma cálido y reconfortante.</li>
+                        <li>Aroma cálido, reconfortante y natural.</li>
                     </ul>
                 </div>
 
                 <!-- Coco Amazónico -->
-                <div class="ingredient-card">
+                <div class="ingredient-card reveal-on-scroll fade-up stagger-3">
                     <div class="ing-badge">Elixir Tropical</div>
                     <div class="ing-icon-circle coco-circle">
                         <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
@@ -573,12 +616,12 @@
                     <h3>Aceite de Coco Virgen</h3>
                     <em class="scientific-name">Cocos nucifera</em>
                     <p>
-                        Prensado en frío a partir de cocos maduros locales. Su contenido de ácido láurico provee propiedades antibacterianas e hidratación profunda, produciendo una espuma abundante y sedosa sin necesidad de aditivos químicos espumantes sintéticos.
+                        Prensado en frío a partir de cocos maduros locales. Su contenido de ácido láurico provee propiedades antibacterianas e hidratación profunda, produciendo una espuma abundante y sedosa sin necesidad de espumantes sintéticos.
                     </p>
                     <ul class="ing-bullets">
-                        <li>Limpieza suave que no reseca.</li>
+                        <li>Limpieza suave que respeta el manto hidrolipídico.</li>
                         <li>Propiedades antimicrobianas naturales.</li>
-                        <li>Espuma biológica y biodegradable.</li>
+                        <li>Espuma biológica y 100% biodegradable.</li>
                     </ul>
                 </div>
             </div>
@@ -589,7 +632,7 @@
     <section class="section kene-section" id="kene">
         <div class="container">
             <div class="kene-wrapper">
-                <div class="kene-content">
+                <div class="kene-content reveal-on-scroll fade-right">
                     <span class="sub-heading sub-light">Cosmovisión & Patrimonio</span>
                     <h2 class="section-title title-light">El Arte Ancestral del Kené</h2>
                     <p class="kene-desc">
@@ -597,41 +640,20 @@
                     </p>
                     <div class="kene-features">
                         <div class="kene-feat">
-                            <strong>Geometría Viva</strong>
+                            <strong>Geometría Sagrada y Sanación</strong>
                             <p>Refleja la piel de la anaconda celestial (Ronin), el curso de los ríos amazónicos y la red invisible que conecta a todos los seres vivos.</p>
                         </div>
                         <div class="kene-feat">
-                            <strong>Empoderamiento Femenino</strong>
-                            <p>Transmitido de madres a hijas durante generaciones, el Kené es el alma y el liderazgo cultural y económico de las mujeres de nuestra comunidad.</p>
+                            <strong>Empoderamiento Femenino y Tradición</strong>
+                            <p>Transmitido de madres a hijas durante generaciones, el Kené es el alma cultural y el pilar económico de las mujeres artesanas.</p>
                         </div>
                     </div>
                     <a href="#contacto" class="btn btn-primary btn-kene">Apoyar los Talleres de Arte</a>
                 </div>
 
-                <div class="kene-art-visual">
+                <div class="kene-art-visual reveal-on-scroll fade-left">
                     <div class="kene-art-frame">
-                        <svg class="kene-full-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="320" height="320" fill="#0d1f18" rx="16"/>
-                            <!-- Outer border -->
-                            <rect x="15" y="15" width="290" height="290" fill="none" stroke="#d97706" stroke-width="2"/>
-                            <rect x="25" y="25" width="270" height="270" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,4"/>
-                            
-                            <!-- Concentric Kené Motifs -->
-                            <path d="M 40,40 L 160,160 L 280,40" fill="none" stroke="#eab308" stroke-width="2"/>
-                            <path d="M 40,280 L 160,160 L 280,280" fill="none" stroke="#eab308" stroke-width="2"/>
-                            <path d="M 40,40 L 160,160 L 40,280" fill="none" stroke="#10b981" stroke-width="2"/>
-                            <path d="M 280,40 L 160,160 L 280,280" fill="none" stroke="#10b981" stroke-width="2"/>
-
-                            <!-- Inner labyrinth -->
-                            <rect x="80" y="80" width="160" height="160" fill="none" stroke="#f97316" stroke-width="2.5"/>
-                            <polygon points="160,80 240,160 160,240 80,160" fill="none" stroke="#f59e0b" stroke-width="2"/>
-                            <rect x="115" y="115" width="90" height="90" fill="#132a22" stroke="#22c55e" stroke-width="2"/>
-                            <polygon points="160,125 195,160 160,195 125,160" fill="none" stroke="#ef4444" stroke-width="2"/>
-                            <circle cx="160" cy="160" r="10" fill="#dc2626"/>
-
-                            <!-- Labyrinth paths -->
-                            <path d="M 95,95 L 140,95 L 140,120 M 225,95 L 180,95 L 180,120 M 95,225 L 140,225 L 140,200 M 225,225 L 180,225 L 180,200" stroke="#fef08a" stroke-width="1.8" fill="none"/>
-                        </svg>
+                        <img src="images/patron-kene.jpg" alt="Patrón tradicional Kené Shipibo-Konibo" class="kene-texture-img" loading="lazy">
                         <div class="kene-badge-text">
                             <span>Patrimonio Cultural Inmaterial de la Nación</span>
                         </div>
@@ -644,7 +666,7 @@
     <!-- Community & Impact Section -->
     <section class="section impact-section" id="impacto">
         <div class="container">
-            <div class="section-header text-center">
+            <div class="section-header text-center reveal-on-scroll fade-up">
                 <span class="sub-heading">Compromiso Real</span>
                 <h2 class="section-title">Impacto Comunitario y Ambiental</h2>
                 <div class="header-decor">
@@ -653,34 +675,34 @@
                     <span class="decor-line"></span>
                 </div>
                 <p class="section-intro">
-                    Cada paso de Niimeken está medido por el bienestar que genera en las familias de nuestra comunidad y por la salud de los bosques que custodiamos.
+                    Cada paso de Nii Meken está medido por el bienestar que genera en las familias de nuestra comunidad y por la salud de los bosques que custodiamos.
                 </p>
             </div>
 
             <div class="impact-metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-value">100%</div>
+                <div class="metric-card reveal-on-scroll fade-up stagger-1">
+                    <div class="metric-value" data-target="100" data-suffix="%">0%</div>
                     <div class="metric-label">Ingredientes Naturales</div>
-                    <p class="metric-desc">Sin microplásticos, parabenos ni derivados petroquímicos contaminantes.</p>
+                    <p class="metric-desc">Sin microplásticos, sulfatos ni derivados petroquímicos contaminantes.</p>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value">0%</div>
+                <div class="metric-card reveal-on-scroll fade-up stagger-2">
+                    <div class="metric-value" data-target="0" data-suffix="%">0%</div>
                     <div class="metric-label">Deforestación</div>
                     <p class="metric-desc">Cosecha no maderable y sistemas agroforestales de cacao y coco sostenibles.</p>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value">+25</div>
+                <div class="metric-card reveal-on-scroll fade-up stagger-3">
+                    <div class="metric-value" data-target="25" data-prefix="+">+0</div>
                     <div class="metric-label">Familias Participantes</div>
                     <p class="metric-desc">Artesanas y recolectores con ingresos justos y autonomía económica directa.</p>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-value">100%</div>
+                <div class="metric-card reveal-on-scroll fade-up stagger-4">
+                    <div class="metric-value" data-target="100" data-suffix="%">0%</div>
                     <div class="metric-label">Biodegradable</div>
                     <p class="metric-desc">Empaques reciclables, cajas de fibras locales y residuos compostables.</p>
                 </div>
             </div>
 
-            <div class="commitments-banner">
+            <div class="commitments-banner reveal-on-scroll zoom-in">
                 <div class="commit-icon">🤝</div>
                 <div class="commit-text">
                     <h3>Nuestro Compromiso Ético con la Comunidad</h3>
@@ -694,22 +716,22 @@
 
     <!-- Manifesto Section -->
     <section class="manifesto-section">
-        <div class="container text-center">
+        <div class="container text-center reveal-on-scroll zoom-in">
             <span class="manifesto-pre">Nuestra Declaración</span>
             <blockquote class="manifesto-quote">
                 "La Amazonía no es un recurso que deba ser explotado; es un hogar vivo que nos alimenta, nos sana y nos inspira. Cuidar de nuestro cuerpo con el fruto sagrado del bosque y vestir el arte de nuestros ancestros es un acto de amor y resistencia por la vida de nuestro planeta."
             </blockquote>
-            <span class="manifesto-sig">— Manifiesto Niimeken • Comunidad Tres Islas</span>
+            <span class="manifesto-sig">— Manifiesto Nii Meken • Comunidad Tres Islas</span>
         </div>
     </section>
 
     <!-- Contact & Action Section -->
     <section class="section contact-section" id="contacto">
         <div class="container">
-            <div class="contact-card-box">
+            <div class="contact-card-box reveal-on-scroll fade-up">
                 <div class="contact-info-col">
                     <span class="sub-heading">Comunícate con Nosotros</span>
-                    <h2 class="contact-title">Sé Parte de Niimeken</h2>
+                    <h2 class="contact-title">Sé Parte de Nii Meken</h2>
                     <p class="contact-desc">
                         ¿Deseas conocer más sobre nuestras producciones comunitarias, adquirir nuestros jabones o joyería Shipibo-Konibo, o colaborar con iniciativas de conservación amazónica? Escríbenos directamente.
                     </p>
@@ -719,7 +741,7 @@
                             <span class="point-icon">📍</span>
                             <div>
                                 <strong>Ubicación Comunitaria</strong>
-                                <span>Amazonía, Comunidad Nativa Tres Islas, Perú</span>
+                                <span>Amazonía, Comunidad Nativa Tres Islas, Madre de Dios, Perú</span>
                             </div>
                         </div>
                         <div class="point-item">
@@ -733,7 +755,7 @@
                             <span class="point-icon">🌿</span>
                             <div>
                                 <strong>Valores</strong>
-                                <span>Comercio Justo • Cultura Viva • Conservación</span>
+                                <span>Comercio Justo • Cultura Viva • Conservación Biocultural</span>
                             </div>
                         </div>
                     </div>
@@ -754,6 +776,7 @@
                             <select id="interest" name="interest">
                                 <option value="jabones">Adquirir Jabones de Cacao, Coco y Sangre de Grado</option>
                                 <option value="joyeria">Joyería Artesanal Shipibo-Konibo (Kené)</option>
+                                <option value="taller">Conocer el Taller Comunitario</option>
                                 <option value="distribucion">Distribución Consciente / Tiendas Sostenibles</option>
                                 <option value="alianza">Alianzas Comunitarias y Conservación</option>
                                 <option value="informacion">Consultas Generales</option>
@@ -785,15 +808,24 @@
         </div>
     </div>
 
+    <!-- Floating Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </button>
+
     <!-- Footer -->
     <footer class="site-footer">
         <div class="container footer-container">
             <div class="footer-col brand-col">
                 <div class="footer-logo">
-                    <span class="logo-title">NIIMEKEN</span>
+                    <img src="images/Logoreal.jpeg" alt="Logo Nii Meken" class="footer-logo-img">
+                    <span class="logo-title">NII MEKEN</span>
                 </div>
                 <p class="footer-tagline">
-                    Integrando el cuidado personal, la moda y la cultura amazónica a través de la sabiduría comunitaria y la conservación del bosque.
+                    Integrando el cuidado personal, la moda y la cultura amazónica a través de la sabiduría comunitaria y la conservación del bosque en Tres Islas, Madre de Dios.
                 </p>
                 <div class="repo-badge">
                     <span>Repositorio oficial en GitHub:</span>
@@ -806,6 +838,7 @@
                 <ul class="footer-links">
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#proyecto">El Proyecto</a></li>
+                    <li><a href="#taller">El Taller Comunitario</a></li>
                     <li><a href="#pilares">Pilares Comunitarios</a></li>
                     <li><a href="#productos">Catálogo Artesanal</a></li>
                     <li><a href="#ingredientes">Botánica & Saberes</a></li>
@@ -825,7 +858,7 @@
 
         <div class="footer-bottom">
             <div class="container bottom-content">
-                <p>&copy; 2026 Niimeken - Comunidad Tres Islas. Todos los derechos reservados. Hecho con respeto y devoción por la Amazonía.</p>
+                <p>&copy; 2026 Nii Meken - Comunidad Tres Islas. Todos los derechos reservados. Hecho con respeto y devoción por la Amazonía.</p>
                 <div class="kene-footer-motif">
                     <span>✦ ❖ ✦</span>
                 </div>
