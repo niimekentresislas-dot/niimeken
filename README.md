@@ -13,8 +13,8 @@
 
 **Niimeken** es una iniciativa de emprendimiento comunitario y conservación biocultural. Nuestro propósito central es integrar el **cuidado personal natural**, el diseño de **moda étnica** y la **identidad ancestral amazónica** a través de:
 
-1. **Jabones Artesanales Botánicos:** Elaborados con manteca virgen de cacao orgánico, aceite puro prensado en frío de coco y extracto silvestre de **sangre de grado** (*Croton lechleri*), un poderoso regenerador y antioxidante dérmico natural.
-2. **Joyería Hecha a Mano (Kené):** Accesorios únicos y contemporáneos inspirados en los patrones geométricos sagrados del arte **Shipibo-Konibo**, elaborados con mostacillas y semillas nativas de recolección ética (huairuro, chonta).
+1. **Jabones Artesanales Botánicos:** Elaborados con aceite virgen de castaña amazónica prensado en frío y manteca pura de cacao silvestre, ambos enriquecidos con látex medicinal de **sangre de grado** (*Croton lechleri*) y bálsamo de **aceite de copaiba** (*Copaifera officinalis*), poderosos regeneradores, cicatrizantes y antioxidantes dérmicos naturales.
+2. **Joyería y Artesanía Hecha a Mano:** Accesorios y piezas únicas elaboradas a mano por artesanas de la comunidad inspiradas en el arte tradicional **Shipibo**, confeccionadas con finas mostacillas y semillas nativas de recolección ética y responsable.
 3. **Participación Comunitaria:** Fomento del intercambio de saberes ancestrales entre generaciones y la valoración digna de las habilidades artesanales de las familias locales.
 4. **Sostenibilidad y Conservación:** Uso respetuoso de los recursos del bosque mediante aprovechamiento de productos no maderables, producción sin residuos plásticos y defensa activa de la biodiversidad amazónica.
 
@@ -24,8 +24,8 @@
 
 | Pilar | Descripción |
 | :--- | :--- |
-| **01. Cuidado Personal Natural** | Fórmulas limpias y biodegradables que nutren y cicatrizan la piel gracias a las propiedades dermatológicas del cacao, coco y la sangre de grado. |
-| **02. Moda y Arte Shipibo-Konibo** | Diseños que transmiten la cosmovisión indígena a través del *Kené*, geometría sagrada que narra los cantos medicinales (*ícaros*) y el orden cósmico. |
+| **01. Cuidado Personal Natural** | Fórmulas limpias y biodegradables que nutren, restauran y protegen la piel gracias a las propiedades botánicas de la castaña, el cacao, la sangre de grado y el aceite de copaiba. |
+| **02. Joyería y Artesanía Shipibo** | Creaciones únicas hechas a mano por maestras artesanas locales con semillas nativas y mostacillas que mantienen viva la tradición artística Shipibo. |
 | **03. Economía Comunitaria y Saberes** | Empoderamiento económico para las mujeres y familias artesanas de Tres Islas, con comercio equitativo y dignificación de las artes tradicionales. |
 | **04. Protección de la Amazonía** | Aprovechamiento sostenible que mantiene el bosque en pie, evitando la tala indiscriminada y minimizando el impacto ambiental con empaques ecológicos. |
 

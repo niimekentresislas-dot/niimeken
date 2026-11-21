@@ -67,18 +67,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Highlight Active Navigation Section on Scroll
+    // 3. Smooth Anchor Scrolling & Highlight Active Navigation Section on Scroll
     const sections = document.querySelectorAll('section[id]');
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Update active link manually on click
+                navLinks.forEach(link => link.classList.remove('active'));
+                const matchedNav = document.querySelector(`.nav-link[href="${targetId}"]`);
+                if (matchedNav) matchedNav.classList.add('active');
+            }
+        });
+    });
+
     function highlightNav() {
         const scrollY = window.pageYOffset;
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 140;
+            const sectionTop = current.offsetTop - 120;
             const sectionId = current.getAttribute('id');
             const correspondingLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
             
             if (correspondingLink) {
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                     navLinks.forEach(link => link.classList.remove('active'));
                     correspondingLink.classList.add('active');
                 }
@@ -94,13 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-revealed');
-                    // Stop observing once animated for optimal performance
                     observer.unobserve(entry.target);
                 }
             });
         }, {
             root: null,
-            threshold: 0.12,
+            threshold: 0.08,
             rootMargin: '0px 0px -40px 0px'
         });
 
@@ -203,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalBody.innerHTML = `
                 <p>${info}</p>
                 <div style="margin-top: 1.2rem; padding: 1rem; background: #f4eee3; border-radius: 8px; font-size: 0.88rem; color: #16654a; border-left: 3px solid #22c55e;">
-                    <strong>✦ Producción 100% comunitaria:</strong> Cada pieza es realizada por artesanas de la comunidad nativa de Tres Islas y productores de cacao orgánico agroforestal en Madre de Dios.
+                    <strong>✦ Producción 100% comunitaria:</strong> Cada creación es elaborada por artesanas y productores de la Comunidad Nativa Tres Islas con castaña amazónica, cacao silvestre, resina de sangre de grado y bálsamo de copaiba en Madre de Dios.
                 </div>
             `;
             modal.classList.add('open');
