@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 8. Interactive 3D Card Hover Tilt on Desktop
     if (window.matchMedia('(hover: hover) and (min-width: 992px)').matches) {
-        const tiltCards = document.querySelectorAll('.interactive-card, .workshop-card');
+        const tiltCards = document.querySelectorAll('.interactive-card, .social-card');
         tiltCards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
