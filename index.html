@@ -44,6 +44,13 @@
                     <li><a href="#impacto" class="nav-link">Comunidad</a></li>
                     <li><a href="#redes" class="nav-link">Redes</a></li>
                     <li><a href="#contacto" class="btn btn-outline-nav">Contacto</a></li>
+                    <li>
+                        <button class="nav-cart-btn" id="navCartBtn" aria-label="Abrir carrito de compras">
+                            <span class="cart-icon">🛒</span>
+                            <span class="cart-text">Carrito</span>
+                            <span class="cart-badge" id="navCartCount">0</span>
+                        </button>
+                    </li>
                 </ul>
             </nav>
 
@@ -326,9 +333,10 @@
             </div>
 
             <div class="products-grid" id="productsGrid">
-                <!-- Item 1: Jabón Cacao con Sangre de Grado y Aceite de Copaiba -->
-                <div class="product-card reveal-on-scroll fade-up stagger-1" data-category="jabones">
+                <!-- Item 1: Jabón Cacao con Sangre de Grado y Copaiba -->
+                <div class="product-card reveal-on-scroll fade-up stagger-1" data-category="jabones" data-product-id="jabon-cacao" data-product-name="Jabón de Cacao con Sangre de Grado y Copaiba" data-is-soap="true">
                     <div class="product-badge">Regenerador & Bálsamo</div>
+                    <div class="stock-badge">Stock máx. 20 uds.</div>
                     <div class="product-image-box">
                         <div class="product-art-preview soap-cacao-bg">
                             <div class="soap-block">
@@ -338,26 +346,74 @@
                         </div>
                     </div>
                     <div class="product-details">
-                        <span class="product-cat-label">Jabón Artesanal</span>
-                        <h3 class="product-name">Jabón de Cacao Puro, Sangre de Grado y Copaiba</h3>
-                        <p class="product-desc">
-                            Enriquecido con manteca pura de cacao silvestre, látex de sangre de grado y bálsamo de copaiba. Potente regenerador dérmico, altamente antioxidante y cicatrizante que revitaliza y suaviza la piel en profundidad.
-                        </p>
-                        <div class="product-specs">
-                            <span>✦ Manteca de Cacao, Sangre de Grado y Copaiba</span>
-                            <span>✦ Propiedades cicatrizantes y antiinflamatorias</span>
-                            <span>✦ Empaque 100% biodegradable</span>
+                        <span class="product-cat-label">Jabonería Botánica</span>
+                        <h3 class="product-name">Jabón de Cacao Puro con Sangre de Grado y Copaiba</h3>
+                        
+                        <!-- Lista de Beneficios Concisa y Eficaz -->
+                        <div class="product-benefits">
+                            <span class="benefits-label">✦ Beneficios Clave:</span>
+                            <ul class="benefits-list">
+                                <li><strong>Regeneración celular:</strong> Cicatriza y estimula colágeno dérmico con Sangre de Grado.</li>
+                                <li><strong>Acción calmante:</strong> Alivia irritaciones, sequedad y rojeces con Copaiba.</li>
+                                <li><strong>Antioxidante puro:</strong> Manteca virgen de cacao silvestre amazónico.</li>
+                                <li><strong>Ideal para:</strong> Piel seca, sensible o expuesta a la intemperie.</li>
+                            </ul>
                         </div>
+
+                        <!-- Selector de Peso y Cantidad -->
+                        <div class="product-purchase-box">
+                            <div class="purchase-row">
+                                <span class="purchase-label">Presentación:</span>
+                                <div class="weight-selector" role="group" aria-label="Seleccionar peso">
+                                    <button type="button" class="weight-btn active" data-weight="80gr">80 gr</button>
+                                    <button type="button" class="weight-btn" data-weight="40gr">40 gr</button>
+                                    <button type="button" class="weight-btn" data-weight="15gr">15 gr</button>
+                                </div>
+                            </div>
+
+                            <div class="purchase-row">
+                                <span class="purchase-label">Cantidad:</span>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn qty-minus" aria-label="Disminuir cantidad">-</button>
+                                    <input type="number" class="qty-input" value="1" min="1" max="20" readonly aria-label="Cantidad seleccionada">
+                                    <button type="button" class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+                                </div>
+                                <span class="stock-cap-text">Máx. 20 unidades</span>
+                            </div>
+
+                            <!-- Advertencia de 1 semana y pedidos por mayor -->
+                            <div class="lead-time-alert">
+                                <span class="alert-icon">⏳</span>
+                                <span>Elaboración artesanal: Envíos preparados con <strong>1 semana de anticipación</strong>.</span>
+                            </div>
+                            
+                            <div class="bulk-order-notice">
+                                ¿Mayor pedido? <a href="#contacto">Contáctanos directamente para pedidos por mayor &rarr;</a>
+                            </div>
+
+                            <div class="product-actions-group">
+                                <button type="button" class="btn btn-add-cart">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                    <span>Añadir al Carrito</span>
+                                </button>
+                                <button type="button" class="btn btn-whatsapp-direct">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.529 1.996.81 2.79.81 3.181 0 5.767-2.587 5.768-5.766 0-3.182-2.586-5.766-5.767-5.766zm3.376 8.21c-.14.397-.714.767-1.002.813-.274.043-.623.076-1.785-.403-1.488-.614-2.438-2.128-2.512-2.227-.074-.099-.607-.808-.607-1.542s.385-1.096.522-1.246c.137-.15.299-.187.399-.187.1 0 .2.001.287.006.091.005.213-.035.333.253.124.298.423 1.033.46 1.108.037.075.062.163.013.262-.05.099-.075.162-.15.249-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.638.831 1.033.571.508 1.052.666 1.202.741.15.075.237.062.325-.038.087-.099.375-.436.475-.586.099-.149.2-.124.337-.074.137.05.873.411 1.023.486.149.075.249.112.287.174.037.063.037.362-.103.759z"/></svg>
+                                    <span>Pedir por WhatsApp</span>
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="product-card-footer">
                             <span class="product-tag">Piel Seca & Sensible</span>
-                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Jabón de Cacao Puro, Sangre de Grado y Copaiba" data-info="Formulado con manteca virgen de cacao silvestre de parcelas agroforestales y enriquecido con látex puro de Sangre de Grado y aceite medicinal de Copaiba. Esta sinergia botánica regenera el tejido dérmico, calma irritaciones y estimula el colágeno natural, protegiendo la piel con un bálsamo emoliente duradero.">Detalles</button>
+                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Jabón de Cacao con Sangre de Grado y Copaiba" data-info="beneficios-cacao">Detalles</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 2: Jabón Castaña con Sangre de Grado y Aceite de Copaiba -->
-                <div class="product-card reveal-on-scroll fade-up stagger-2" data-category="jabones">
+                <!-- Item 2: Jabón Castaña con Sangre de Grado y Copaiba -->
+                <div class="product-card reveal-on-scroll fade-up stagger-2" data-category="jabones" data-product-id="jabon-castana" data-product-name="Jabón de Castaña con Sangre de Grado y Copaiba" data-is-soap="true">
                     <div class="product-badge">Nutrición & Protección</div>
+                    <div class="stock-badge">Stock máx. 20 uds.</div>
                     <div class="product-image-box">
                         <div class="product-art-preview soap-castana-bg">
                             <div class="soap-block soap-block-castana">
@@ -367,25 +423,72 @@
                         </div>
                     </div>
                     <div class="product-details">
-                        <span class="product-cat-label">Jabón Artesanal</span>
-                        <h3 class="product-name">Jabón de Castaña Amazónica, Sangre de Grado y Copaiba</h3>
-                        <p class="product-desc">
-                            Espuma suave y cremosa a base de aceite puro de castaña amazónica prensado en frío, combinado con sangre de grado y copaiba. Aporta nutrición celular profunda, selenio natural y un escudo protector dérmico.
-                        </p>
-                        <div class="product-specs">
-                            <span>✦ Aceite de Castaña, Sangre de Grado y Copaiba</span>
-                            <span>✦ Rico en selenio, vitamina E y ácidos grasos</span>
-                            <span>✦ pH balanceado, sin parabenos ni sulfatos</span>
+                        <span class="product-cat-label">Jabonería Botánica</span>
+                        <h3 class="product-name">Jabón de Castaña Amazónica con Sangre de Grado y Copaiba</h3>
+                        
+                        <!-- Lista de Beneficios Concisa y Eficaz -->
+                        <div class="product-benefits">
+                            <span class="benefits-label">✦ Beneficios Clave:</span>
+                            <ul class="benefits-list">
+                                <li><strong>Nutrición intensiva:</strong> Aceite de castaña rico en Selenio y Vitamina E pura.</li>
+                                <li><strong>Barrera cutánea:</strong> Restaura la hidratación y combate la resequedad.</li>
+                                <li><strong>Escudo balsámico:</strong> Acción antiséptica y protectora con Copaiba y Sangre de Grado.</li>
+                                <li><strong>Ideal para:</strong> Todo tipo de piel, hidratación facial y corporal diaria.</li>
+                            </ul>
                         </div>
+
+                        <!-- Selector de Peso y Cantidad -->
+                        <div class="product-purchase-box">
+                            <div class="purchase-row">
+                                <span class="purchase-label">Presentación:</span>
+                                <div class="weight-selector" role="group" aria-label="Seleccionar peso">
+                                    <button type="button" class="weight-btn active" data-weight="80gr">80 gr</button>
+                                    <button type="button" class="weight-btn" data-weight="40gr">40 gr</button>
+                                    <button type="button" class="weight-btn" data-weight="15gr">15 gr</button>
+                                </div>
+                            </div>
+
+                            <div class="purchase-row">
+                                <span class="purchase-label">Cantidad:</span>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn qty-minus" aria-label="Disminuir cantidad">-</button>
+                                    <input type="number" class="qty-input" value="1" min="1" max="20" readonly aria-label="Cantidad seleccionada">
+                                    <button type="button" class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+                                </div>
+                                <span class="stock-cap-text">Máx. 20 unidades</span>
+                            </div>
+
+                            <!-- Advertencia de 1 semana y pedidos por mayor -->
+                            <div class="lead-time-alert">
+                                <span class="alert-icon">⏳</span>
+                                <span>Elaboración artesanal: Envíos preparados con <strong>1 semana de anticipación</strong>.</span>
+                            </div>
+                            
+                            <div class="bulk-order-notice">
+                                ¿Mayor pedido? <a href="#contacto">Contáctanos directamente para pedidos por mayor &rarr;</a>
+                            </div>
+
+                            <div class="product-actions-group">
+                                <button type="button" class="btn btn-add-cart">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                    <span>Añadir al Carrito</span>
+                                </button>
+                                <button type="button" class="btn btn-whatsapp-direct">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.529 1.996.81 2.79.81 3.181 0 5.767-2.587 5.768-5.766 0-3.182-2.586-5.766-5.767-5.766zm3.376 8.21c-.14.397-.714.767-1.002.813-.274.043-.623.076-1.785-.403-1.488-.614-2.438-2.128-2.512-2.227-.074-.099-.607-.808-.607-1.542s.385-1.096.522-1.246c.137-.15.299-.187.399-.187.1 0 .2.001.287.006.091.005.213-.035.333.253.124.298.423 1.033.46 1.108.037.075.062.163.013.262-.05.099-.075.162-.15.249-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.638.831 1.033.571.508 1.052.666 1.202.741.15.075.237.062.325-.038.087-.099.375-.436.475-.586.099-.149.2-.124.337-.074.137.05.873.411 1.023.486.149.075.249.112.287.174.037.063.037.362-.103.759z"/></svg>
+                                    <span>Pedir por WhatsApp</span>
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="product-card-footer">
                             <span class="product-tag">Nutrición & Todo Tipo de Piel</span>
-                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Jabón de Castaña Amazónica, Sangre de Grado y Copaiba" data-info="La castaña amazónica de Madre de Dios aporta ácidos grasos esenciales y selenio antioxidante que repara la barrera cutánea. Combinada con el poder cicatrizante de la sangre de grado y el efecto antiséptico y calmante de la copaiba, ofrece una limpieza profundamente nutritiva para rostro y cuerpo.">Detalles</button>
+                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Jabón de Castaña con Sangre de Grado y Copaiba" data-info="beneficios-castana">Detalles</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Item 3: Joyería Shipibo Collar Artesanal -->
-                <div class="product-card reveal-on-scroll fade-up stagger-3" data-category="joyeria">
+                <div class="product-card reveal-on-scroll fade-up stagger-3" data-category="joyeria" data-product-id="collar-shipibo" data-product-name="Collar Artesanal Shipibo en Mostacilla y Semillas" data-is-soap="false">
                     <div class="product-badge ethnic-badge">Joyería Shipibo</div>
                     <div class="product-image-box">
                         <div class="product-art-preview jewelry-bg">
@@ -404,23 +507,54 @@
                     <div class="product-details">
                         <span class="product-cat-label">Joyería Artesanal</span>
                         <h3 class="product-name">Collar Artesanal Shipibo en Mostacilla y Semillas</h3>
-                        <p class="product-desc">
-                            Pieza de alta confección artesanal elaborada punto a punto por maestras artesanas shipibo con mostacillas seleccionadas y semillas nativas recolectadas responsablemente del bosque amazónico.
-                        </p>
-                        <div class="product-specs">
-                            <span>✦ Tradición artesanal Shipibo</span>
-                            <span>✦ Hilo reforzado de máxima resistencia</span>
-                            <span>✦ Semillas nativas del bosque vivo</span>
+                        
+                        <div class="product-benefits">
+                            <span class="benefits-label">✦ Características Clave:</span>
+                            <ul class="benefits-list">
+                                <li><strong>100% hecho a mano:</strong> Por maestras artesanas de la Comunidad Tres Islas.</li>
+                                <li><strong>Semillas nativas:</strong> Cosecha ética que preserva el bosque primario vivo.</li>
+                                <li><strong>Diseño tradicional:</strong> Pieza única de identidad, elegancia y comercio justo.</li>
+                                <li><strong>Materiales:</strong> Mostacillas finas e hilo de alta resistencia.</li>
+                            </ul>
                         </div>
+
+                        <div class="product-purchase-box">
+                            <div class="purchase-row">
+                                <span class="purchase-label">Cantidad:</span>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn qty-minus" aria-label="Disminuir cantidad">-</button>
+                                    <input type="number" class="qty-input" value="1" min="1" max="10" readonly aria-label="Cantidad seleccionada">
+                                    <button type="button" class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+                                </div>
+                                <span class="stock-cap-text">Pieza exclusiva</span>
+                            </div>
+
+                            <div class="lead-time-alert">
+                                <span class="alert-icon">⏳</span>
+                                <span>Confección manual: Envíos coordinados con <strong>1 semana de anticipación</strong>.</span>
+                            </div>
+
+                            <div class="product-actions-group">
+                                <button type="button" class="btn btn-add-cart">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                    <span>Añadir al Carrito</span>
+                                </button>
+                                <button type="button" class="btn btn-whatsapp-direct">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.529 1.996.81 2.79.81 3.181 0 5.767-2.587 5.768-5.766 0-3.182-2.586-5.766-5.767-5.766zm3.376 8.21c-.14.397-.714.767-1.002.813-.274.043-.623.076-1.785-.403-1.488-.614-2.438-2.128-2.512-2.227-.074-.099-.607-.808-.607-1.542s.385-1.096.522-1.246c.137-.15.299-.187.399-.187.1 0 .2.001.287.006.091.005.213-.035.333.253.124.298.423 1.033.46 1.108.037.075.062.163.013.262-.05.099-.075.162-.15.249-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.638.831 1.033.571.508 1.052.666 1.202.741.15.075.237.062.325-.038.087-.099.375-.436.475-.586.099-.149.2-.124.337-.074.137.05.873.411 1.023.486.149.075.249.112.287.174.037.063.037.362-.103.759z"/></svg>
+                                    <span>Pedir por WhatsApp</span>
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="product-card-footer">
                             <span class="product-tag">Joyería Hecha a Mano</span>
-                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Collar Artesanal Shipibo en Mostacilla y Semillas" data-info="Cada collar es una creación artesanal única hecha a mano por mujeres de la Comunidad Tres Islas. El uso de mostacillas finas y semillas silvestres locales preserva la artesanía tradicional y genera ingresos directos para las familias del pueblo.">Detalles</button>
+                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Collar Artesanal Shipibo en Mostacilla y Semillas" data-info="beneficios-collar">Detalles</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Item 4: Joyería Shipibo Aretes y Pulsera -->
-                <div class="product-card reveal-on-scroll fade-up stagger-1" data-category="joyeria">
+                <div class="product-card reveal-on-scroll fade-up stagger-1" data-category="joyeria" data-product-id="aretes-pulsera-shipibo" data-product-name="Set de Aretes y Pulsera de Artesanía Shipibo" data-is-soap="false">
                     <div class="product-badge ethnic-badge">Artesanía Shipibo</div>
                     <div class="product-image-box">
                         <div class="product-art-preview jewelry-earrings-bg">
@@ -437,23 +571,54 @@
                     <div class="product-details">
                         <span class="product-cat-label">Joyería Artesanal</span>
                         <h3 class="product-name">Set de Aretes y Pulsera de Artesanía Shipibo</h3>
-                        <p class="product-desc">
-                            Diseño liviano, delicado y contemporáneo inspirado en el arte Shipibo. Tejido manual flexible con acabados confortables y cuentas finas en armonía con semillas amazónicas.
-                        </p>
-                        <div class="product-specs">
-                            <span>✦ Cuentas finas y semillas amazónicas</span>
-                            <span>✦ Livianos y cómodos para uso cotidiano</span>
-                            <span>✦ Hecho 100% a mano por mujeres de la comunidad</span>
+                        
+                        <div class="product-benefits">
+                            <span class="benefits-label">✦ Características Clave:</span>
+                            <ul class="benefits-list">
+                                <li><strong>Tejido manual minucioso:</strong> Mostacillas finas y semillas nativas seleccionadas.</li>
+                                <li><strong>Máxima comodidad:</strong> Livianos, hipoalergénicos para uso diario prolongado.</li>
+                                <li><strong>Herencia biocultural:</strong> Diseños tradicionales transmitidos entre generaciones.</li>
+                                <li><strong>Empoderamiento:</strong> Beneficio directo para mujeres artesanas locales.</li>
+                            </ul>
                         </div>
+
+                        <div class="product-purchase-box">
+                            <div class="purchase-row">
+                                <span class="purchase-label">Cantidad:</span>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn qty-minus" aria-label="Disminuir cantidad">-</button>
+                                    <input type="number" class="qty-input" value="1" min="1" max="10" readonly aria-label="Cantidad seleccionada">
+                                    <button type="button" class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+                                </div>
+                                <span class="stock-cap-text">Pieza exclusiva</span>
+                            </div>
+
+                            <div class="lead-time-alert">
+                                <span class="alert-icon">⏳</span>
+                                <span>Confección manual: Envíos coordinados con <strong>1 semana de anticipación</strong>.</span>
+                            </div>
+
+                            <div class="product-actions-group">
+                                <button type="button" class="btn btn-add-cart">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                    <span>Añadir al Carrito</span>
+                                </button>
+                                <button type="button" class="btn btn-whatsapp-direct">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.529 1.996.81 2.79.81 3.181 0 5.767-2.587 5.768-5.766 0-3.182-2.586-5.766-5.767-5.766zm3.376 8.21c-.14.397-.714.767-1.002.813-.274.043-.623.076-1.785-.403-1.488-.614-2.438-2.128-2.512-2.227-.074-.099-.607-.808-.607-1.542s.385-1.096.522-1.246c.137-.15.299-.187.399-.187.1 0 .2.001.287.006.091.005.213-.035.333.253.124.298.423 1.033.46 1.108.037.075.062.163.013.262-.05.099-.075.162-.15.249-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.638.831 1.033.571.508 1.052.666 1.202.741.15.075.237.062.325-.038.087-.099.375-.436.475-.586.099-.149.2-.124.337-.074.137.05.873.411 1.023.486.149.075.249.112.287.174.037.063.037.362-.103.759z"/></svg>
+                                    <span>Pedir por WhatsApp</span>
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="product-card-footer">
                             <span class="product-tag">Joyería Hecha a Mano</span>
-                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Set de Aretes y Pulsera de Artesanía Shipibo" data-info="Este conjunto de joyería artesanal une la estética tradicional Shipibo con la comodidad cotidiana. Su elaboración apoya directamente el trabajo de mujeres artesanas comprometidas con la preservación de su patrimonio cultural.">Detalles</button>
+                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Set de Aretes y Pulsera de Artesanía Shipibo" data-info="beneficios-aretes">Detalles</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Item 5: Set de Bienestar Niimeken -->
-                <div class="product-card reveal-on-scroll fade-up stagger-2" data-category="sets">
+                <div class="product-card reveal-on-scroll fade-up stagger-2" data-category="sets" data-product-id="cofre-bienestar" data-product-name="Cofre de Bienestar Amazónico" data-is-soap="false">
                     <div class="product-badge set-badge">Pack Completo</div>
                     <div class="product-image-box">
                         <div class="product-art-preview set-box-bg">
@@ -472,17 +637,48 @@
                     <div class="product-details">
                         <span class="product-cat-label">Experiencia Integral</span>
                         <h3 class="product-name">Cofre de Bienestar Amazónico</h3>
-                        <p class="product-desc">
-                            La experiencia total Nii Meken: un jabón de Cacao (con sangre de grado y copaiba), un jabón de Castaña (con sangre de grado y copaiba) y una joya de artesanía Shipibo hecha a mano, presentados en una caja ecológica de fibra vegetal.
-                        </p>
-                        <div class="product-specs">
-                            <span>✦ 1 Jabón de Cacao con Sangre de Grado y Aceite de Copaiba</span>
-                            <span>✦ 1 Jabón de Castaña con Sangre de Grado y Aceite de Copaiba</span>
-                            <span>✦ 1 Joya artesanal Shipibo hecha a mano</span>
+                        
+                        <div class="product-benefits">
+                            <span class="benefits-label">✦ Contenido del Cofre:</span>
+                            <ul class="benefits-list">
+                                <li><strong>1 Jabón de Cacao (80gr):</strong> Con Sangre de Grado y Copaiba.</li>
+                                <li><strong>1 Jabón de Castaña (80gr):</strong> Con Sangre de Grado y Copaiba.</li>
+                                <li><strong>1 Joya artesanal Shipibo:</strong> Tejida a mano con semillas nativas.</li>
+                                <li><strong>Presentación ecológica:</strong> Caja de fibra vegetal 100% biodegradable.</li>
+                            </ul>
                         </div>
+
+                        <div class="product-purchase-box">
+                            <div class="purchase-row">
+                                <span class="purchase-label">Cantidad:</span>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn qty-minus" aria-label="Disminuir cantidad">-</button>
+                                    <input type="number" class="qty-input" value="1" min="1" max="10" readonly aria-label="Cantidad seleccionada">
+                                    <button type="button" class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+                                </div>
+                                <span class="stock-cap-text">Edición de colección</span>
+                            </div>
+
+                            <div class="lead-time-alert">
+                                <span class="alert-icon">⏳</span>
+                                <span>Preparación artesanal: Envíos con <strong>1 semana de anticipación</strong>.</span>
+                            </div>
+
+                            <div class="product-actions-group">
+                                <button type="button" class="btn btn-add-cart">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                    <span>Añadir al Carrito</span>
+                                </button>
+                                <button type="button" class="btn btn-whatsapp-direct">
+                                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.529 1.996.81 2.79.81 3.181 0 5.767-2.587 5.768-5.766 0-3.182-2.586-5.766-5.767-5.766zm3.376 8.21c-.14.397-.714.767-1.002.813-.274.043-.623.076-1.785-.403-1.488-.614-2.438-2.128-2.512-2.227-.074-.099-.607-.808-.607-1.542s.385-1.096.522-1.246c.137-.15.299-.187.399-.187.1 0 .2.001.287.006.091.005.213-.035.333.253.124.298.423 1.033.46 1.108.037.075.062.163.013.262-.05.099-.075.162-.15.249-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.638.831 1.033.571.508 1.052.666 1.202.741.15.075.237.062.325-.038.087-.099.375-.436.475-.586.099-.149.2-.124.337-.074.137.05.873.411 1.023.486.149.075.249.112.287.174.037.063.037.362-.103.759z"/></svg>
+                                    <span>Pedir por WhatsApp</span>
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="product-card-footer">
                             <span class="product-tag">Regalo Consciente</span>
-                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Cofre de Bienestar Amazónico" data-info="El regalo ideal para quienes aprecian la sostenibilidad, la artesanía originaria y el autocuidado botánico. Cada cofre reúne nuestros jabones de castaña y cacao con sangre de grado y copaiba junto a una pieza de joyería artesanal hecha a mano en Tres Islas.">Detalles</button>
+                            <button class="btn btn-sm btn-outline detail-trigger" data-title="Cofre de Bienestar Amazónico" data-info="beneficios-cofre">Detalles</button>
                         </div>
                     </div>
                 </div>
@@ -876,6 +1072,65 @@
             </div>
         </div>
     </div>
+
+    <!-- Shopping Cart Slide-over Drawer -->
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle">
+        <div class="cart-header">
+            <div>
+                <h3 id="cartTitle" class="cart-title">Tu Carrito de Pedido</h3>
+                <span class="cart-subtitle">Nii Meken • Comunidad Tres Islas</span>
+            </div>
+            <button class="cart-close-btn" id="closeCartBtn" aria-label="Cerrar carrito">&times;</button>
+        </div>
+
+        <div class="cart-body" id="cartItemsList">
+            <!-- Rendered by JavaScript -->
+        </div>
+
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-anticipation-banner">
+                <span class="banner-icon">⏳</span>
+                <div>
+                    <strong>Aviso de Preparación:</strong>
+                    <p>Cada pedido se elabora artesanalmente en la comunidad. Los envíos se preparan con <strong>1 semana de anticipación</strong>.</p>
+                </div>
+            </div>
+
+            <div class="cart-soap-limit-alert" id="cartSoapLimitAlert">
+                <span>📦 Stock limitado a máx. 20 jabones por pedido.</span>
+            </div>
+
+            <div class="cart-bulk-hint" id="cartBulkHint" style="display: none;">
+                ⚠️ <em>Has superado el límite de 20 jabones. Para pedidos mayoristas, por favor contáctanos directamente en la <a href="#contacto">sección de contacto</a>.</em>
+            </div>
+
+            <div class="cart-total-bar">
+                <span class="total-label">Total de artículos:</span>
+                <span class="total-qty" id="cartTotalCount">0 artículos</span>
+            </div>
+
+            <a href="#" class="btn btn-whatsapp-checkout" id="whatsappCheckoutBtn" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.529 1.996.81 2.79.81 3.181 0 5.767-2.587 5.768-5.766 0-3.182-2.586-5.766-5.767-5.766zm3.376 8.21c-.14.397-.714.767-1.002.813-.274.043-.623.076-1.785-.403-1.488-.614-2.438-2.128-2.512-2.227-.074-.099-.607-.808-.607-1.542s.385-1.096.522-1.246c.137-.15.299-.187.399-.187.1 0 .2.001.287.006.091.005.213-.035.333.253.124.298.423 1.033.46 1.108.037.075.062.163.013.262-.05.099-.075.162-.15.249-.074.088-.157.196-.224.263-.075.074-.153.155-.066.305.087.149.387.638.831 1.033.571.508 1.052.666 1.202.741.15.075.237.062.325-.038.087-.099.375-.436.475-.586.099-.149.2-.124.337-.074.137.05.873.411 1.023.486.149.075.249.112.287.174.037.063.037.362-.103.759z"/></svg>
+                <span>Enviar Pedido a WhatsApp (972471475)</span>
+            </a>
+
+            <div class="cart-bottom-actions">
+                <button type="button" class="btn-clear-cart" id="clearCartBtn">Vaciar Carrito</button>
+                <a href="#contacto" class="btn-bulk-contact">Pedido Mayorista &rarr;</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Floating Cart Pill Button -->
+    <button class="floating-cart-pill" id="floatingCartBtn" aria-label="Ver carrito">
+        <span class="pill-icon">🛒</span>
+        <span class="pill-text">Mi Pedido</span>
+        <span class="pill-badge" id="floatCartBadge">0</span>
+    </button>
+
+    <!-- Cart Toast Notification -->
+    <div class="cart-toast" id="cartToast" role="alert"></div>
 
     <!-- Floating Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Volver arriba">

@@ -209,7 +209,361 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. Product Modal Details
+    // =========================================================================
+    // 7. Interactive Product Options (Weight, Quantity, Cart & WhatsApp)
+    // =========================================================================
+    const WHATSAPP_PHONE = '51972471475';
+    let cart = [];
+
+    // Weight selection buttons
+    const weightButtons = document.querySelectorAll('.weight-btn');
+    weightButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const container = btn.closest('.weight-selector');
+            if (container) {
+                container.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+        });
+    });
+
+    // Quantity selectors (+ and -)
+    const qtySelectors = document.querySelectorAll('.qty-selector');
+    qtySelectors.forEach(selector => {
+        const minusBtn = selector.querySelector('.qty-minus');
+        const plusBtn = selector.querySelector('.qty-plus');
+        const input = selector.querySelector('.qty-input');
+        const card = selector.closest('.product-card');
+        const isSoap = card ? card.getAttribute('data-is-soap') === 'true' : false;
+        const maxStock = isSoap ? 20 : 10;
+
+        minusBtn.addEventListener('click', () => {
+            let val = parseInt(input.value, 10) || 1;
+            if (val > 1) {
+                input.value = val - 1;
+            }
+        });
+
+        plusBtn.addEventListener('click', () => {
+            let val = parseInt(input.value, 10) || 1;
+            if (val < maxStock) {
+                input.value = val + 1;
+            } else {
+                showToast(`Máximo ${maxStock} unidades por pedido web.`);
+            }
+        });
+    });
+
+    // Direct WhatsApp Button on each card
+    const whatsappDirectButtons = document.querySelectorAll('.btn-whatsapp-direct');
+    whatsappDirectButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.product-card');
+            if (!card) return;
+
+            const name = card.getAttribute('data-product-name');
+            const isSoap = card.getAttribute('data-is-soap') === 'true';
+            const qtyInput = card.querySelector('.qty-input');
+            const qty = parseInt(qtyInput ? qtyInput.value : 1, 10) || 1;
+            
+            let weightInfo = '';
+            if (isSoap) {
+                const activeWeightBtn = card.querySelector('.weight-btn.active');
+                const weight = activeWeightBtn ? activeWeightBtn.getAttribute('data-weight') : '80gr';
+                weightInfo = `\n• Presentación: *${weight}*`;
+            }
+
+            const message = `Hola Nii Meken! Deseo adquirir el siguiente producto:
+🌿 *${name}*${weightInfo}
+• Cantidad: *${qty} unidad(es)*
+
+⏳ Entiendo que la producción es artesanal y los envíos se preparan con 1 semana de anticipación (stock máx. 20 unidades).
+
+¿Podrían confirmarme la disponibilidad para coordinar el envío? ¡Muchas gracias!`;
+
+            const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    });
+
+    // Add to Cart on each card
+    const addCartButtons = document.querySelectorAll('.btn-add-cart');
+    addCartButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.product-card');
+            if (!card) return;
+
+            const id = card.getAttribute('data-product-id');
+            const name = card.getAttribute('data-product-name');
+            const isSoap = card.getAttribute('data-is-soap') === 'true';
+            const qtyInput = card.querySelector('.qty-input');
+            const qty = parseInt(qtyInput ? qtyInput.value : 1, 10) || 1;
+            
+            let weight = 'Unidad';
+            if (isSoap) {
+                const activeWeightBtn = card.querySelector('.weight-btn.active');
+                weight = activeWeightBtn ? activeWeightBtn.getAttribute('data-weight') : '80gr';
+            }
+
+            addToCart({
+                id: `${id}-${weight}`,
+                productId: id,
+                name: name,
+                weight: weight,
+                qty: qty,
+                isSoap: isSoap
+            });
+
+            // Button visual feedback
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `✓ <span>¡Añadido!</span>`;
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 1200);
+
+            showToast(`✓ Añadido: ${qty}x ${name} (${weight})`);
+            openCartDrawer();
+        });
+    });
+
+    // =========================================================================
+    // Cart Drawer & Cart State Management
+    // =========================================================================
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const navCartBtn = document.getElementById('navCartBtn');
+    const floatingCartBtn = document.getElementById('floatingCartBtn');
+    const navCartCount = document.getElementById('navCartCount');
+    const floatCartBadge = document.getElementById('floatCartBadge');
+    const cartItemsList = document.getElementById('cartItemsList');
+    const cartTotalCount = document.getElementById('cartTotalCount');
+    const whatsappCheckoutBtn = document.getElementById('whatsappCheckoutBtn');
+    const clearCartBtn = document.getElementById('clearCartBtn');
+    const cartBulkHint = document.getElementById('cartBulkHint');
+    const cartSoapLimitAlert = document.getElementById('cartSoapLimitAlert');
+
+    function openCartDrawer() {
+        if (cartDrawer && cartOverlay) {
+            cartDrawer.classList.add('open');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeCartDrawer() {
+        if (cartDrawer && cartOverlay) {
+            cartDrawer.classList.remove('open');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (navCartBtn) navCartBtn.addEventListener('click', openCartDrawer);
+    if (floatingCartBtn) floatingCartBtn.addEventListener('click', openCartDrawer);
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartDrawer);
+    if (cartOverlay) cartOverlay.addEventListener('click', closeCartDrawer);
+
+    function addToCart(item) {
+        const existing = cart.find(i => i.id === item.id);
+        if (existing) {
+            const max = item.isSoap ? 20 : 10;
+            existing.qty = Math.min(existing.qty + item.qty, max);
+        } else {
+            cart.push(item);
+        }
+        updateCartUI();
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(i => i.id !== id);
+        updateCartUI();
+    }
+
+    function changeCartItemQty(id, delta) {
+        const item = cart.find(i => i.id === id);
+        if (item) {
+            const max = item.isSoap ? 20 : 10;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                removeFromCart(id);
+                return;
+            }
+            if (item.qty > max) {
+                item.qty = max;
+                showToast(`Stock máximo de ${max} unidades alcanzado.`);
+            }
+            updateCartUI();
+        }
+    }
+
+    function updateCartUI() {
+        const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+        const totalSoaps = cart.filter(i => i.isSoap).reduce((acc, item) => acc + item.qty, 0);
+
+        if (navCartCount) navCartCount.textContent = totalItems;
+        if (floatCartBadge) floatCartBadge.textContent = totalItems;
+        if (cartTotalCount) cartTotalCount.textContent = `${totalItems} ${totalItems === 1 ? 'artículo' : 'artículos'}`;
+
+        // Soap limit check (max 20 soaps)
+        if (totalSoaps > 20) {
+            if (cartBulkHint) cartBulkHint.style.display = 'block';
+            if (cartSoapLimitAlert) cartSoapLimitAlert.style.color = '#dc2626';
+        } else {
+            if (cartBulkHint) cartBulkHint.style.display = 'none';
+            if (cartSoapLimitAlert) cartSoapLimitAlert.style.color = 'var(--color-forest-leaf)';
+        }
+
+        // Render Cart Items
+        if (cartItemsList) {
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = `
+                    <div class="cart-empty-state">
+                        <div class="cart-empty-icon">🌿</div>
+                        <h4>Tu carrito está vacío</h4>
+                        <p>Selecciona tus jabones de cacao y castaña o joyería Shipibo en el catálogo.</p>
+                    </div>
+                `;
+                if (whatsappCheckoutBtn) {
+                    whatsappCheckoutBtn.style.opacity = '0.5';
+                    whatsappCheckoutBtn.style.pointerEvents = 'none';
+                }
+            } else {
+                if (whatsappCheckoutBtn) {
+                    whatsappCheckoutBtn.style.opacity = '1';
+                    whatsappCheckoutBtn.style.pointerEvents = 'auto';
+                }
+
+                cartItemsList.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-meta">${item.weight !== 'Unidad' ? `Presentación: ${item.weight}` : 'Pieza artesanal'}</div>
+                        </div>
+                        <div class="cart-item-qty-wrap">
+                            <button type="button" class="cart-item-qty-btn" onclick="window.changeCartQty('${item.id}', -1)" aria-label="Disminuir">-</button>
+                            <span class="cart-item-qty-val">${item.qty}</span>
+                            <button type="button" class="cart-item-qty-btn" onclick="window.changeCartQty('${item.id}', 1)" aria-label="Aumentar">+</button>
+                            <button type="button" class="cart-item-remove" onclick="window.removeCartItem('${item.id}')" aria-label="Eliminar">&times;</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Build WhatsApp Checkout Link
+        if (whatsappCheckoutBtn && cart.length > 0) {
+            let itemsText = cart.map(i => `* ${i.qty}x ${i.name} (${i.weight})`).join('\n');
+            const totalText = `${totalItems} ${totalItems === 1 ? 'artículo' : 'artículos'}`;
+            
+            const message = `Hola Nii Meken! Deseo realizar el siguiente pedido:
+
+${itemsText}
+
+Total: *${totalText}*
+⏳ Entiendo que la elaboración es artesanal y los envíos se preparan con 1 semana de anticipación (stock máx. 20 unidades).
+
+¿Podrían confirmarme la disponibilidad para coordinar la entrega y el pago? ¡Muchas gracias!`;
+
+            whatsappCheckoutBtn.href = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+        }
+    }
+
+    window.changeCartQty = changeCartItemQty;
+    window.removeCartItem = removeFromCart;
+
+    if (clearCartBtn) {
+        clearCartBtn.addEventListener('click', () => {
+            cart = [];
+            updateCartUI();
+            showToast('Carrito vaciado');
+        });
+    }
+
+    // Toast function
+    const toast = document.getElementById('cartToast');
+    let toastTimeout;
+    function showToast(msg) {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2800);
+    }
+
+    // =========================================================================
+    // 8. Product Modal Details (Resumen Conciso y Eficaz)
+    // =========================================================================
+    const productDescriptions = {
+        'beneficios-cacao': {
+            title: 'Jabón de Cacao Puro con Sangre de Grado y Copaiba',
+            presentaciones: '80gr, 40gr y 15gr',
+            beneficios: [
+                'Regeneración celular profunda y cicatrización dérmica natural.',
+                'Alivio eficaz de irritaciones, dermatitis, sequedad y rojeces.',
+                'Alta concentración de flavonoides antioxidantes del cacao silvestre.',
+                'Fórmula 100% botánica, biodegradable y libre de químicos sintéticos.'
+            ],
+            ingredientes: 'Manteca de cacao silvestre (Theobroma cacao), látex de Sangre de Grado (Croton lechleri), resina medicinal de Copaiba (Copaifera officinalis).',
+            recomendado: 'Piel seca, sensible, madura o expuesta al clima tropical y sol.',
+            aviso: 'Stock limitado a máx. 20 unidades por pedido web. Envíos preparados con 1 semana de anticipación.'
+        },
+        'beneficios-castana': {
+            title: 'Jabón de Castaña Amazónica con Sangre de Grado y Copaiba',
+            presentaciones: '80gr, 40gr y 15gr',
+            beneficios: [
+                'Nutrición intensiva rica en Selenio orgánico y Vitamina E pura de Madre de Dios.',
+                'Restaura y refuerza la barrera lipídica, combatiendo la deshidratación dérmica.',
+                'Efecto balsámico protector y antiséptico proporcionado por la Copaiba.',
+                'Espuma cremosa y suave que deja la piel tersa, elástica y protegida.'
+            ],
+            ingredientes: 'Aceite puro de castaña amazónica prensado en frío (Bertholletia excelsa), resina de Sangre de Grado, aceite de Copaiba.',
+            recomendado: 'Todo tipo de piel, cuidado diario facial y corporal, prevención de resequedad.',
+            aviso: 'Stock limitado a máx. 20 unidades por pedido web. Envíos preparados con 1 semana de anticipación.'
+        },
+        'beneficios-collar': {
+            title: 'Collar Artesanal Shipibo en Mostacilla y Semillas',
+            presentaciones: 'Pieza única hecha a mano',
+            beneficios: [
+                'Confección 100% manual por maestras artesanas de la Comunidad Tres Islas.',
+                'Semillas nativas recolectadas sin talar ni dañar el bosque vivo.',
+                'Alta durabilidad con hilo reforzado y mostacillas seleccionadas.',
+                'Comercio justo que retribuye dignamente el talento de las artesanas locales.'
+            ],
+            ingredientes: 'Mostacillas finas seleccionadas, semillas nativas amazónicas, hilo de alta resistencia.',
+            recomendado: 'Uso cotidiano, ocasiones especiales y regalo de moda consciente con propósito.',
+            aviso: 'Piezas exclusivas. Envíos coordinados con 1 semana de anticipación.'
+        },
+        'beneficios-aretes': {
+            title: 'Set de Aretes y Pulsera de Artesanía Shipibo',
+            presentaciones: 'Conjunto de aretes + pulsera',
+            beneficios: [
+                'Tejido manual flexible, sumamente liviano y cómodo para todo el día.',
+                'Acabados hipoalergénicos suaves con la piel.',
+                'Expresión de la herencia cultural y estética ancestral Shipibo.',
+                'Genera autonomía económica directa para mujeres artesanas de la comunidad.'
+            ],
+            ingredientes: 'Mostacillas finas, semillas nativas y acabados hipoalergénicos.',
+            recomendado: 'Accesorio versátil y contemporáneo de identidad amazónica.',
+            aviso: 'Piezas exclusivas. Envíos coordinados con 1 semana de anticipación.'
+        },
+        'beneficios-cofre': {
+            title: 'Cofre de Bienestar Amazónico Nii Meken',
+            presentaciones: 'Cofre completo con 3 creaciones',
+            beneficios: [
+                '1 Jabón de Cacao con Sangre de Grado y Copaiba (80gr).',
+                '1 Jabón de Castaña con Sangre de Grado y Copaiba (80gr).',
+                '1 Joya artesanal Shipibo tejida a mano con semillas nativas.',
+                'Caja ecológica biodegradable de fibra vegetal de la comunidad.'
+            ],
+            ingredientes: 'Insumos 100% botánicos amazónicos y artesanía comunitaria de Tres Islas.',
+            recomendado: 'La experiencia completa de autocuidado y el regalo consciente ideal.',
+            aviso: 'Edición artesanal. Envíos preparados con 1 semana de anticipación.'
+        }
+    };
+
     const modal = document.getElementById('productModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalBody = document.getElementById('modalBody');
@@ -220,16 +574,37 @@ document.addEventListener('DOMContentLoaded', () => {
     detailTriggers.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            const title = button.getAttribute('data-title');
-            const info = button.getAttribute('data-info');
+            const key = button.getAttribute('data-info');
+            const data = productDescriptions[key];
 
-            modalTitle.textContent = title;
-            modalBody.innerHTML = `
-                <p>${info}</p>
-                <div style="margin-top: 1.2rem; padding: 1rem; background: #f4eee3; border-radius: 8px; font-size: 0.88rem; color: #16654a; border-left: 3px solid #22c55e;">
-                    <strong>✦ Producción 100% comunitaria:</strong> Cada creación es elaborada por artesanas y productores de la Comunidad Nativa Tres Islas con castaña amazónica, cacao silvestre, resina de sangre de grado y bálsamo de copaiba en Madre de Dios.
-                </div>
-            `;
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalBody.innerHTML = `
+                    <div style="margin-bottom: 0.8rem; font-size: 0.82rem; color: #b84c30; font-weight: 700; text-transform: uppercase;">
+                        📦 Presentación: ${data.presentaciones}
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="color: #0c2d22; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">✦ Beneficios Clave:</strong>
+                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.88rem; color: #1e293b;">
+                            ${data.beneficios.map(b => `<li style="position: relative; padding-left: 1.2rem;"><span style="position: absolute; left: 0; color: #22c55e; font-weight: 700;">✓</span> ${b}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div style="font-size: 0.84rem; color: #576574; margin-bottom: 0.8rem; line-height: 1.5;">
+                        <strong style="color: #0c2d22;">Ingredientes:</strong> ${data.ingredientes}
+                    </div>
+                    <div style="font-size: 0.84rem; color: #576574; margin-bottom: 1rem; line-height: 1.5;">
+                        <strong style="color: #0c2d22;">Recomendado:</strong> ${data.recomendado}
+                    </div>
+                    <div style="background: #fefce8; border: 1px solid #fef08a; padding: 0.75rem 0.9rem; border-radius: 8px; font-size: 0.82rem; color: #854d0e; line-height: 1.45; margin-bottom: 1rem;">
+                        <strong>⏳ Aviso de Producción:</strong> ${data.aviso}
+                    </div>
+                    <div>
+                        <a href="https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(`Hola Nii Meken! Deseo consultar o realizar un pedido de: ${data.title} (stock máx. 20 unidades, preparado con 1 semana de anticipación).`)}" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: #25D366; color: white; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none;">
+                            Pedir por WhatsApp (972471475) ↗
+                        </a>
+                    </div>
+                `;
+            }
             modal.classList.add('open');
         });
     });
